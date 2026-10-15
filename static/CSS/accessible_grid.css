@@ -80,7 +80,7 @@ footer {
   width: 100%;
   min-height: 100vh;
   grid-template-columns:
-   1fr       2fr       1fr;
+   1fr       3fr       1fr;
   grid-template-areas:
   "heady     heady     heady"
   "navvy     navvy     navvy"

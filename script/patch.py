@@ -50,28 +50,36 @@ def clean_bbcode(text):
     return text.strip()
 
 def parse_patch_notes(text):
+    text = text.replace('\r\n', '\n')
     if '[p]' in text:
-        raw_segments = re.findall(r'\[p\](.*?)\[/p\]', text, re.DOTALL)
-    else:
-        raw_segments = re.split(r'\n\s*\n+', text.strip())
+        # each [p]...[/p] becomes its own line; an empty [p][/p] becomes a blank line
+        text = re.sub(r'\[p\](.*?)\[/p\]', lambda m: m.group(1) + '\n', text, flags=re.DOTALL)
 
     sections = []
+    group = []          # consecutive non-blank lines = one card
 
     def current_section():
         if not sections:
             sections.append({'header': None, 'bullets': [], 'images': []})
         return sections[-1]
 
-    for raw in raw_segments:
+    def flush():
+        if group:
+            current_section()['bullets'].append('\n'.join(group))
+            group.clear()
+
+    for raw in text.split('\n'):
         raw = raw.strip()
         if not raw:
+            flush()                     # blank line = gap between groups
             continue
 
-        images = extract_images(raw)   # must run BEFORE clean_bbcode strips the tags
+        images = extract_images(raw)    # must run BEFORE clean_bbcode strips the tags
         is_header = raw.startswith('[b]') and raw.endswith('[/b]')
         clean = clean_bbcode(raw)
 
         if is_header and clean:
+            flush()
             if clean.startswith('- '):
                 clean = clean[2:]
             sections.append({'header': clean, 'bullets': [], 'images': images})
@@ -80,10 +88,9 @@ def parse_patch_notes(text):
         if images:
             current_section()['images'].extend(images)
         if clean:
-            if clean.startswith('- '):
-                clean = clean[2:]
-            current_section()['bullets'].append(clean)
+            group.append(clean)
 
+    flush()
     return sections
 
 data = fetch_patch()

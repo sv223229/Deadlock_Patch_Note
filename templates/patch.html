@@ -36,7 +36,9 @@
               <div class="inner_body_text">
                   <div class="flex_container">
                       <div>
-                          <p>{{ bullet }}</p>
+                          {% for line in bullet.split('\n') %}
+                          <p>{{ line }}</p>
+                          {% endfor %}
                       </div>
                   </div>
               </div>
