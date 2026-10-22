@@ -38,6 +38,7 @@ body {
   background-color: #080808;
   font-size: 15px;
   font-family: 'Im Fell Double Pica', 'Cinzel', serif;
+  color: white;
   
 }
 
@@ -51,12 +52,6 @@ h2 {font-size:1.25em;}
 
 h3 {font-size:1.1em;}
 
-p {
-  margin-bottom: 1.8em;
-  line-height: 1.8em;
-  color: white;
-  font-family: 'Im Fell Double Pica';
-}
 
 header,nav,main,aside,footer {
   padding: 1.5em;
@@ -158,52 +153,4 @@ nav ul li {
 
       }
 } 
-.body_header_text {
-  background: #013a63;
-  border: 2px solid rgba(0,90,255,0.35);
-  border-radius: 8px 8px 0 0; 
-  padding: 1rem;
-  margin: 1rem auto 0; 
-  max-width: 900px;
-}
 
-.body_body_text {
-  background: rgba(0, 0, 0, 0.3);
-  border: 2px solid rgba(255,215,0,0.3);
-  border-top: none;              
-  border-radius: 0 0 8px 8px;    
-  padding: 0.9rem 1rem;
-  margin: 0 auto 1rem;           
-  max-width: 900px;
-  box-sizing: border-box;
-}
-
-.inner_body_text {
-  background: rgb(34, 35, 48); 
-  border: 1px solid rgba(0,128,128,0.25);
-  border-radius: 4px;
-  padding: 0.6rem;
-  margin: 0.4rem 0;
-  font-size: 0.95rem;
-}
-.flex_container {
-  display: flex;
-  justify-content: column;
-  /* gap: 2rem; */
-}
-.flex_container div {
-  min-width: 100px;
-}
-.inner_body_text p {
-  margin-bottom: 0;
-  /* padding-left: 27rem; */
-}
-#quote {
-  font-style: italic;
-  font-size: 3rem;
-  color: yellow;
-}
-cite {
-  font-size: 2rem;
-  color: yellow;
-}

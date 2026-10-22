@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Patch Info Page</title>
-  <link href="../static/CSS/accessible_grid.css" rel="stylesheet">
+  <link href="../static/CSS/patch.css" rel="stylesheet">
 </head>
 <body>
 <div class="container">
@@ -25,25 +25,7 @@
   </nav>
   <main>
 
-           {% for section in sections %}
-              {% if section.header %}<h2>{{ section.header }}</h2>{% endif %}
-
-              {% for img in section.images %}
-                  <img src="{{ img }}" alt="" style="max-width: 100%;">
-              {% endfor %}
-
-              {% for bullet in section.bullets %}
-              <div class="inner_body_text">
-                  <div class="flex_container">
-                      <div>
-                          {% for line in bullet.split('\n') %}
-                          <p>{{ line }}</p>
-                          {% endfor %}
-                      </div>
-                  </div>
-              </div>
-              {% endfor %}
-          {% endfor %}
+          <div class="patch_body">{{ body|safe }}</div>
 
   </main>
   <aside id="aside1">
