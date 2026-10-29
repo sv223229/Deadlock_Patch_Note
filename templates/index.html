@@ -4,94 +4,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Nhat Nguyen Info Page</title>
-  <link href="../static/CSS/accessible_grid.css" rel="stylesheet">
+  <title>Patch Info Page</title>
+  <link href="../static/CSS/patch.css" rel="stylesheet">
 </head>
 <body>
 <div class="container">
   <header>
     <div class="header_text">
-      <h1>My Pick for Game of the year</h1>
-      <h2>2025</h2>
+      <h1>Patch Notes</h1>
+      {% if date %}
+        <h2>{{ date }}</h2>
+      {% endif %}
     </div>
   </header>
   <nav aria-labelledby="main menu">
     <ul>
-      <li><a href="table.html"><span aria-hidden="true">Table</span></a></li>
-      <li><a href="buy_now_pay_later.html"><span aria-hidden="true">BNPL</span></a></li>
-      <li><a href="semantic_outline.html"><span aria-hidden="true">semantic</span></a></li>
-      <li><a href="home_page.html"><span aria-hidden="true">Home Page</span></a></li>
-      <li><a href="leaderboard.html"><span aria-hidden="true">Leaderboard</span></a></li>
+      <li><a href="{{ url_for('search') }}"><span aria-hidden="true">Steam</span></a></li>
+      <li><a href="{{ url_for('home') }}"><span aria-hidden="true">Leaderboard</span></a></li>
     </ul>
   </nav>
   <main>
 
-    <section>
-      <div class="body_header_text">
-        <h2>My top 3 pick</h2>
-      </div>
-      <div class="body_body_text">
-
-          <div class="inner_body_text">
-            <div class="flex_container">
-              <div><img src="../img/Expedition33.jpg" alt="Description of Expedition 33" style="border: 2px solid black; border-radius: 10px;" width="150" height="100"></div>
-              <div><h4>Expedition 33</h4></div>
-                <div>
-                  <P>Score: 9.5/10</P>
-                </div>
-            </div>
-          </div>
-          <div class="inner_body_text">
-            <div class="flex_container">
-              <div><img src="../img/SilkSong.jpg" alt="Description of Silk Song" style="border: 2px solid black; border-radius: 10px;" width="150" height="100"></div>
-              <div><h4>Silk Song</h4></div>
-                <div>
-                  <P>Score: 8/10 </P>
-                </div>
-            </div>
-          </div>
-          <div class="inner_body_text">
-            <div class="flex_container">
-              <div><img src="../img/hades2.jpg" alt="Description of Nier Automata" style="border: 2px solid black; border-radius: 10px;" width="150" height="100"></div>
-              <div><h4>Hades 2</h4></div>
-                <div>
-                  <P>Score: 9/10</P>
-                </div>
-            </div>
-          </div>
-
-      </div>
-    </section>
-    <section>
-      <div class="body_header_text">
-        <h2>Expedition33</h2>
-      </div>
-      <div class="body_body_text">
-        <p>My personal Pick for Game of the Year is Expedition33. The game offer a new refreshing on turn based game by using souls like mechanic such as parrying or dodging from game like sekiro or Darksoul.
-        The game have a great story line with interesting character development and insane plot twist that keep player questionning about the mystery throughout the whole game. The game also have a great art style and an absolute banger of an soundtrack that bring the overall experience.
-        To another level. The game is defenitely once in a generation game.
-        </p>
-      
-        
-
-      </div>
-    </section>
+          <div class="patch_body">{{ body|safe }}</div>
 
   </main>
   <aside id="aside1">
-    <h2>Introduction</h2>
-    <h3>Major: Computer Science</h3>
-    <h3>Hobby: Muay Thai, Anime, Games</h3>
-    <p>This page include basic information of me. The Game Section show the games that I played this year. The Anime section show my top 3 Animes </p>
+    
   </aside>
   <aside id="aside2">
-    <h2>My Favorite Quote from the game</h2>
-    <blockquote cite="https://clair-obscur.fandom.com/wiki/Renoir">
-            <q id="quote">we must accept things as they are, not how we want them to be </q>
-            <cite> - Renoir</cite>
+   
   </aside>
   <footer>
-    <small> designed by Nhat Nguyen</small>
+    <small> designed by </small>
   </footer>
 
 </div> 

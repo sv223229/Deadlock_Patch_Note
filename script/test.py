@@ -272,7 +272,7 @@ def patch():
     body_html = steam_to_html(event["body"])
     match = re.search(r'\d{2}-\d{2}-\d{4}', event["headline"])
     date = match.group() if match else ""
-    return render_template('patch.html', body=body_html, date=date)
+    return render_template('index.html', body=body_html, date=date)
 
 @app.route('/match-history', methods=['GET'])
 def match_history():
