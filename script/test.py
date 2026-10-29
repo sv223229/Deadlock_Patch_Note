@@ -2,6 +2,7 @@ import requests
 import os
 import re
 import time
+import secrets
 
 from flask import Flask, redirect, render_template
 from flask import request, session
@@ -15,7 +16,16 @@ static_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'stat
 app = Flask(__name__, template_folder=template_dir, static_folder=static_dir)
 env_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'steam.env'))
 load_dotenv(env_path)
-app.secret_key = os.getenv("SECRET_KEY")
+secret = os.getenv("SECRET_KEY")
+if not secret:
+    secret = secrets.token_hex(32)
+    try:
+        with open(env_path, 'a', encoding='utf-8') as f:
+            f.write(f"\nSECRET_KEY={secret}\n")
+    except Exception:
+        # If writing fails, continue with the generated secret (ephemeral)
+        pass
+app.secret_key = secret
 db_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'deadlock.db'))
 app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_path}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
