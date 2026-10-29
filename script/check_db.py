@@ -1,4 +1,4 @@
-from test import app
+from app import app
 from sql_lite import db, CachedMatch, NameLookup, BuffLookup
 from sqlalchemy import inspect
 

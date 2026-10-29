@@ -1,4 +1,4 @@
-from test import match_result, get_hero_name, app, process_power_up_buffs
+from script.app import match_result, get_hero_name, app, process_power_up_buffs
 
 def print_power_up_buffs(match_id):
     data = match_result(match_id)
@@ -45,7 +45,7 @@ def calculate_total_gold_death_loss(player):
     stats = player.get('stats', [])
     values = [s.get('gold_death_loss', 0) for s in stats if s.get('gold_death_loss') is not None]
     return max(values) if values else 0
-from test import app, match_result, process_power_up_buffs
+from script.app import app, match_result, process_power_up_buffs
 
 with app.app_context():
     data = match_result(103363148)
